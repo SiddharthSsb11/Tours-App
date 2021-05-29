@@ -1,0 +1,47 @@
+{
+  "name": "nature-tours",
+  "version": "1.0.0",
+  "description": "nature_tours",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "start:prod": "SET NODE_ENV=production&& nodemon server.js",
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js --public-url ./",
+    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js --public-url ./"
+  },
+  "author": "siddharth",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-csp": "^0.1.3",
+    "express-mongo-sanitize": "^2.0.2",
+    "express-rate-limit": "^5.2.6",
+    "helmet": "^4.5.0",
+    "hpp": "^0.2.3",
+    "html-to-text": "^7.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.5.0",
+    "pug": "^3.0.2",
+    "sharp": "^0.28.2",
+    "slugify": "^1.5.2",
+    "stripe": "^8.149.0",
+    "validator": "^13.5.2",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "ndb": "^1.1.5",
+    "nodemon": "^2.0.7",
+    "parcel-bundler": "^1.12.5"
+  }
+}
