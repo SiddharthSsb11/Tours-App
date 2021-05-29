@@ -5,7 +5,7 @@ exports.deleteOne = (Model) => {//without braces--no return works-- as only one 
   return async (req, res, next) => {
     try {
       const doc = await Model.findByIdAndDelete(req.params.id);
-      console.log('deleted');
+      console.log('deleted successfully');
       if (!doc) {
         return next(
           new AppError(`NO document were found with that id ${req.params.id}`, 404)
