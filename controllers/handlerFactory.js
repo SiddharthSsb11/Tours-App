@@ -5,7 +5,7 @@ exports.deleteOne = (Model) => {//without braces--no return works-- as only one 
   return async (req, res, next) => {
     try {
       const doc = await Model.findByIdAndDelete(req.params.id);
-      console.log('deleted successfully');
+      //console.log('deleted successfully');
       if (!doc) {
         return next(
           new AppError(`NO document were found with that id ${req.params.id}`, 404)
@@ -37,7 +37,7 @@ exports.updateOne = (Model) => async (req, res, next) => {
       );
       //throw next (new AppError) works too//using next and pssing it to error handling middleware preffered
     }
-    console.log('updated');
+    //console.log('updated');
     res.status(200).json({
       status: 'success',
       data: {
@@ -76,7 +76,7 @@ exports.getOne = (Model, populateOptionsObj) => {
     try {
       let query = Model.findById(req.params.id);
       if(populateOptionsObj) query = query.populate(populateOptionsObj);
-      console.log(populateOptionsObj)
+      //console.log(populateOptionsObj)
       //virtual populating reviews for the tour pulled--without child referencing for review
       
       const doc = await query;

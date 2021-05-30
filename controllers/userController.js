@@ -84,7 +84,7 @@ const deletePhotoFromServer = async (photo) => {
     //removing/deleting
     await fs.unlink(path, err => {
         if (err) return console.log(err);
-        console.log('Previous photo has been deleted');
+        //console.log('Previous photo has been deleted');
     });
 };
 

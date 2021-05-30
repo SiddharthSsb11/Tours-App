@@ -55,7 +55,7 @@ exports.signup = async (req, res, next) => {
         createAndSendToken(newUser, 201, res);
 
         const url = `${req.protocol}://${req.get('host')}/me`;
-        console.log(url);
+        
         await new Email(newUser, url).sendWelcome();
 
         //const token = signToken(newUser._id);
@@ -81,7 +81,7 @@ exports.login = async (req,res,next) => {
     try {
       //email and password exists or not
       const { email, password } = req.body;
-     //console.log(email, password);
+     
       if (!email || !password) {
         return next(new AppError('Email or Password is missing', 400));
       }
@@ -267,7 +267,7 @@ exports.resetPassword = async (req, res, next) => {
         //1)gettin user by matching token send in the url on email with the crypted one stored in our d/b passwordResetToken 
        const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
        const user = await User.findOne({passwordResetToken: hashedToken, /*email: req.params.email,*/ passwordResetExpires : { $gt: Date.now()}});
-       console.log(user)
+       
        if(!user){
            return next(new AppError('The token is invalid or expired', 400));
        }

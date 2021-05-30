@@ -18,7 +18,7 @@ const reviewBtn = document.querySelector('.btn--review');
 const reviewSave = document.querySelector('.review-save');
 const closeReview = document.querySelector('.close');
 
-console.log('Just Do It');
+//console.log('Just Do It');
 
 // DELEGATION
 if (mapBox) {
@@ -53,7 +53,7 @@ if (userDataForm) {
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
 
-    console.log(form);
+    //console.log(form);
 
     await updateSettings(form, 'data');
     

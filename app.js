@@ -8,6 +8,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -87,7 +88,9 @@ app.use(hpp({
         'price'
     ]
 })); 
- 
+
+app.use(compression());
+
 //routes middlware // mounting routes
 
 app.use('/', viewRouter);
@@ -108,5 +111,5 @@ app.all('*', (req, res, next) => {
 
 //global error handling middleware
 app.use(globalErrorHandler);
-console.log('Test')
+
 module.exports = app;

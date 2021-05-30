@@ -30,7 +30,7 @@ exports.uploadTourImages = upload.fields([
 
 exports.resizingTourImages = async (req, res, next) => {
   try{
-    console.log(req.files);
+    //console.log(req.files);
 
     if (!req.files.imageCover || !req.files.images) return next();
 
