@@ -1,5 +1,5 @@
 const AppError = require('./../utils/appError');
-const APIFeatures = require('./../utils/apifeatures');
+const APIFeatures = require('./../utils/apiFeatures');
 
 exports.deleteOne = (Model) => {//without braces--no return works-- as only one thing for outer func to run
   return async (req, res, next) => {
