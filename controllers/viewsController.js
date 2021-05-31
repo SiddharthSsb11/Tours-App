@@ -53,8 +53,7 @@ exports.getTour = async (req, res, next) => {
       title: `${tour.name} Tour`,
       isBooked,
       tourDate,
-      tour,
-      user: req.user
+      tour
     });
   } catch (error) {
     res.status(400).json({
