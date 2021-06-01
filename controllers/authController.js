@@ -21,7 +21,7 @@ const createAndSendToken = (user, statusCode, req, res) => {
           Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
         ),
         httpOnly: true,
-        secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https'//heroku production fgc
         
     };
     //comment this out if error regarding login in production mode..i.e working on localhost no on https//secure =false
@@ -31,6 +31,7 @@ const createAndSendToken = (user, statusCode, req, res) => {
      
     // Remove password from output
     user.password = undefined;
+    user.passwordConfirm = undefined;
 
     res.status(statusCode).json({
         status: 'success',
