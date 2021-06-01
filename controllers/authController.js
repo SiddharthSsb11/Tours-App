@@ -13,7 +13,7 @@ const signToken = function(id){
     } )
 }
 
-const createAndSendToken = (user, statusCode, res) => {
+const createAndSendToken = (user, statusCode, req, res) => {
     const token = signToken(user._id);
 
     const cookieOptions = {
@@ -21,10 +21,11 @@ const createAndSendToken = (user, statusCode, res) => {
           Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
         ),
         httpOnly: true,
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
         
     };
     //comment this out if error regarding login in production mode..i.e working on localhost no on https//secure =false
-    if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+    //if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
     // Creating and attaching cookie to response body
     res.cookie('jwt', token, cookieOptions);
      
@@ -52,7 +53,7 @@ exports.signup = async (req, res, next) => {
             role: req.body.role
         });
 
-        createAndSendToken(newUser, 201, res);
+        createAndSendToken(newUser, 201, req, res);
 
         const url = `${req.protocol}://${req.get('host')}/me`;
         
@@ -97,7 +98,7 @@ exports.login = async (req,res,next) => {
       };
 
       //sending the token via cookie after performing checks
-      createAndSendToken(user, 200, res);
+      createAndSendToken(user, 200, req, res);
       
       /* const token = signToken(user._id);
       res.status(200).json({
@@ -281,7 +282,7 @@ exports.resetPassword = async (req, res, next) => {
 
        //3) Update changedPasswordAt property for the user -pre save hook document middleware
        //4) sending the jwt and login the user
-       createAndSendToken(user, 200, res);
+       createAndSendToken(user, 200, req, res);
        /*const token = signToken(user._id);
        res.status(200).json({
          status: 'success',
@@ -314,7 +315,7 @@ exports.updatePassword = async (req, res, next) => {
        await userLoggedIn.save();
 
        //Log user in, send JWT
-       createAndSendToken(userLoggedIn, 200, res);
+       createAndSendToken(userLoggedIn, 200, req, res);
 
     }catch(error){
         res.status(400).json({

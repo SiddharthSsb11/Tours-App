@@ -18,8 +18,11 @@ const bookingRouter = require('./routes/bookingRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
+//start express app
 const app = express();
 
+//heroku fgc proxy
+app.enable('trust proxy');
 
 //setting up pug engine
 app.set('view engine', 'pug');
