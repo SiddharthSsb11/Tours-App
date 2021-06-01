@@ -28,13 +28,22 @@ app.enable('trust proxy');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-//cross origin
-app.use(
+//cross origin resiurce share MW
+/* app.use(
   cors({
     origin: true,
     credentials: true,
   })
-);
+); */
+app.use(cors());
+// Access-Control-Allow-Origin *
+// api.natours.com, front-end natours.com
+// app.use(cors({
+//   origin: 'https://www.natours.com'
+// }))
+
+app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
 
 // 1) GLOBAL MIDDLEWARES
 //serving static files MW
