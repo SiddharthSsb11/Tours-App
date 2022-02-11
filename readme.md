@@ -20,7 +20,7 @@ https://explore-himalayas-tour.herokuapp.com/
 ![Homepage](/screenshots/tours2.png "Homepage")
 ![Details](/screenshots/tours1.png "Details")
 ![Profile](/screenshots/tours3.png "Profile")
-![Booking](/screenshots/tours3.png "Booking")
+![Booking](/screenshots/tours4.png "Booking")
 
 ## Features
 
